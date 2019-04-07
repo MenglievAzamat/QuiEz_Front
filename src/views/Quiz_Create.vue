@@ -53,6 +53,6 @@
 
 <script>
 export default {
-  name: "Quiz"
+  name: "quiz_create"
 };
 </script>

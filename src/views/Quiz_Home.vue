@@ -2,14 +2,13 @@
   <v-layout row wrap>
     <v-flex xs12>
       <v-btn
-        v-show="loggedIn"
         absolute
         dark
         fab
         bottom
         right
         color="red"
-        to="/create"
+        to="/quiz/new"
         class="mb-5"
       >
         <v-icon>add</v-icon>
@@ -19,13 +18,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
-  name: "quiz_home",
-  computed: {
-    ...mapGetters("user", {
-      loggedIn: "loggedIn"
-    })
-  }
+  name: "quiz_home"
 };
 </script>
