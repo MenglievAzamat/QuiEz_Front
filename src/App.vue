@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <vue-title title="QuiEz"></vue-title>
+    <site-title title="QuiEz"></site-title>
     <navigation></navigation>
     <router-view class="pa-5"></router-view>
   </div>

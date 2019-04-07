@@ -4,17 +4,39 @@
       <v-flex xs12 sm8 md4>
         <v-card class="elevation-12">
           <v-toolbar dark color="secondary">
-            <v-toolbar-title>Войти</v-toolbar-title>
+            <v-toolbar-title>Зарегистрироваться</v-toolbar-title>
           </v-toolbar>
+
           <v-card-text>
             <v-form v-model="valid">
               <v-text-field
+                v-model="username"
+                prepend-icon="person"
+                name="username"
+                label="Имя"
+                type="text"
+                :rules="usernameRules"
+                color="red red--text"
+              ></v-text-field>
+
+              <v-text-field
+                v-model="surname"
+                prepend-icon="person"
+                name="surname"
+                label="Фамилия"
+                type="text"
+                :rules="usernameRules"
+                color="red red--text"
+              ></v-text-field>
+
+              <v-text-field
                 v-model="email"
-                prepend-icon="mail"
+                prepend-icon="email"
                 name="email"
                 label="Эл. почта"
                 type="email"
                 :rules="emailRules"
+                color="red red--text"
               ></v-text-field>
 
               <v-text-field
@@ -24,26 +46,26 @@
                 label="Пароль"
                 type="password"
                 :rules="passwordRules"
+                color="red red--text"
               ></v-text-field>
             </v-form>
           </v-card-text>
           <v-card-actions>
-            <v-btn to="/register">Зарегистрироваться</v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="red white--text" @click="submit">Войти</v-btn>
+            <v-btn @click="submit" type="submit" color="red white--text"
+              >Вперед</v-btn
+            >
           </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
-    {{ response }}
   </v-container>
 </template>
 
 <script>
 export default {
-  name: "Login",
+  name: "Register",
   data: () => ({
-    response: "",
     valid: false,
     email: "",
     emailRules: [
@@ -53,25 +75,20 @@ export default {
     password: "",
     passwordRules: [v => !!v || "Введите пароль"],
     username: "",
-    usernameRules: [v => !!v || "Введите имя пользователя"]
+    usernameRules: [v => !!v || "Поле не должно быть пустым"],
+    surname: ""
   }),
   methods: {
     submit() {
       if (this.valid) {
         let data = {
-          username: this.email,
+          first_name: this.username,
+          last_name: this.surname,
           email: this.email,
           password: this.password
         };
 
-        this.$store.dispatch("login", data).then(
-          result => {
-            this.response = result;
-          },
-          error => {
-            this.response = "NO: " + error;
-          }
-        );
+        return this.$store.dispatch("register", data);
       }
     }
   }
