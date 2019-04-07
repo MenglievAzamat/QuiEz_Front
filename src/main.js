@@ -7,7 +7,7 @@ import title from "./components/SiteTitle";
 
 Vue.config.productionTip = false;
 
-Vue.component("vue-title", title);
+Vue.component("site-title", title);
 
 new Vue({
   router,

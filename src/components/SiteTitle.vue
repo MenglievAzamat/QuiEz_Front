@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "vue-title",
+  name: "site-title",
   props: ["title"],
   created() {
     document.title = this.title;
