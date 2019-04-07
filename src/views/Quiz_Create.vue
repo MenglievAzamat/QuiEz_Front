@@ -44,7 +44,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn flat to="/">Отмена</v-btn>
+        <v-btn flat to="/quiz">Отмена</v-btn>
         <v-btn flat color="red">Создать</v-btn>
       </v-card-actions>
     </v-card>
