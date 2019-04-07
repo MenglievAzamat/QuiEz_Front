@@ -8,6 +8,7 @@
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn to="/about" flat>О проекте</v-btn>
+      <v-btn to="/quiz" flat>Создать тест</v-btn>
       <v-btn to="/logout" flat>Выйти</v-btn>
       <v-btn to="/login" flat>Войти</v-btn>
     </v-toolbar-items>
