@@ -35,7 +35,6 @@
         </v-card>
       </v-flex>
     </v-layout>
-    {{ response }}
   </v-container>
 </template>
 
@@ -43,7 +42,7 @@
 export default {
   name: "Login",
   data: () => ({
-    response: "",
+    token: "",
     valid: false,
     email: "",
     emailRules: [
@@ -64,14 +63,14 @@ export default {
           password: this.password
         };
 
-        this.$store.dispatch("login", data).then(
-          result => {
-            this.response = result;
-          },
-          error => {
-            this.response = "NO: " + error;
-          }
-        );
+        this.$store
+          .dispatch("login", data)
+          .then(() => {
+            this.$router.push("/");
+          })
+          .catch(error => {
+            localStorage.removeItem('token');
+          });
       }
     }
   }

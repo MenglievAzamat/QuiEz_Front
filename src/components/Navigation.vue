@@ -7,24 +7,16 @@
     </router-link>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn v-for="(link, i) in links" :key="i" :to="`${link.link}`" flat>{{
-        link.title
-      }}</v-btn>
+      <v-btn to="/about" flat>О проекте</v-btn>
+      <v-btn to="/logout" flat>Выйти</v-btn>
+      <v-btn to="/login" flat>Войти</v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
 
 <script>
 export default {
-  name: "Navigation",
-  data() {
-    return {
-      links: [
-        { title: "О проекте", link: "/about" },
-        { title: "Войти", link: "/login" }
-      ]
-    };
-  }
+  name: "Navigation"
 };
 </script>
 

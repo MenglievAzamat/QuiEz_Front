@@ -17,8 +17,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    register({ state, commit }, data) {
-      axios
+    async register({ state, commit }, data) {
+      return await axios
         .post(state.baseRegisterUrl, JSON.stringify(data), {
           headers: {
             Accept: "application/json",
@@ -27,24 +27,30 @@ export default new Vuex.Store({
         })
         .then(response => {
           commit("setResponse", response);
+          alert("Успешно");
+          this.$router.push("/");
         })
         .catch(error => {
           commit("setResponse", error);
+          alert("Пользователь уже зарегистрирован!");
         });
     },
-    login({ state, commit }, data) {
-      axios
+    async login({ state, commit }, data) {
+      return await axios
         .post(state.baseLoginUrl, JSON.stringify(data), {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
           }
         })
-        .then((response) => {
-          commit("setResponse", response);
+        .then(response => {
+          commit("setResponse", response.data.key);
+          localStorage.setItem('token', this.response);
         })
-        .catch((error) => {
+        .catch(error => {
           commit("setResponse", error);
+          localStorage.removeItem("token");
+          alert("Такого пользователя не существует!");
         });
     }
   }
