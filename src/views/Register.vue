@@ -88,7 +88,7 @@ export default {
           password: this.password
         };
 
-        return this.$store.dispatch("register", data);
+        this.$store.dispatch("register", data);
       }
     }
   }
