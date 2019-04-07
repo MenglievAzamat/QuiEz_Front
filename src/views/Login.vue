@@ -9,15 +9,6 @@
           <v-card-text>
             <v-form v-model="valid">
               <v-text-field
-                v-model="username"
-                prepend-icon="person"
-                name="username"
-                label="Имя пользвателя"
-                type="text"
-                :rules="usernameRules"
-              ></v-text-field>
-
-              <v-text-field
                 v-model="email"
                 prepend-icon="mail"
                 name="email"
@@ -68,14 +59,14 @@ export default {
     submit() {
       if (this.valid) {
         let data = {
-          username: this.username,
+          username: this.email,
           email: this.email,
           password: this.password
         };
 
         this.$store.dispatch("login", data).then(
           result => {
-            this.response = "YES: " + result;
+            this.response = result;
           },
           error => {
             this.response = "NO: " + error;

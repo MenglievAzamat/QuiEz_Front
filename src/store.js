@@ -34,11 +34,16 @@ export default new Vuex.Store({
     },
     login({ state, commit }, data) {
       axios
-        .post(state.baseLoginUrl, JSON.stringify(data))
-        .then(response => {
+        .post(state.baseLoginUrl, JSON.stringify(data), {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        })
+        .then((response) => {
           commit("setResponse", response);
         })
-        .catch(error => {
+        .catch((error) => {
           commit("setResponse", error);
         });
     }
