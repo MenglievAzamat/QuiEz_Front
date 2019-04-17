@@ -16,12 +16,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "assets/css/fonts.css";
+
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: Righteous, sans-serif;
 }
 </style>
